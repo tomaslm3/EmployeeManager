@@ -12,9 +12,23 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Contenido del modal</p>
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="vgAddEmployee" CssClass="alert alert-danger" />
+                    <asp:TextBox ID="txtFirstname" runat="server" CssClass="form-control" placeholder="Nombre" ValidationGroup="vgAddEmployee"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvFirstname" runat="server" ControlToValidate="txtFirstname" ErrorMessage="Se requiere Nombre" ValidationGroup="vgAddEmployee"></asp:RequiredFieldValidator>
+                    <br />
+                    <asp:TextBox ID="txtLastname" runat="server" CssClass="form-control" placeholder="Apellido" ValidationGroup="vgAddEmployee"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvLastname" runat="server" ControlToValidate="txtLastname" ErrorMessage="Se requiere Apellido" ValidationGroup="vgAddEmployee"></asp:RequiredFieldValidator>
+                    <br />
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Email" ValidationGroup="vgAddEmployee"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Se requiere Email" ValidationGroup="vgAddEmployee"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Formato de Email invalido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="vgAddEmployee"></asp:RegularExpressionValidator>
+                    <br />
+                    <asp:TextBox ID="txtSalary" runat="server" CssClass="form-control" placeholder="Salario" ValidationGroup="vgAddEmployee"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvSalary" runat="server" ControlToValidate="txtSalary" ErrorMessage="Se requiere Salario" ValidationGroup="vgAddEmployee"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="revSalary" runat="server" ControlToValidate="txtSalary" ErrorMessage="Formato de Salario invalido" ValidationExpression="^\d+(\.\d{1,2})?$" ValidationGroup="vgAddEmployee"></asp:RegularExpressionValidator>
                 </div>
                 <div class="modal-footer">
+                    <asp:Button ID="btnCreateEmployee" runat="server" Text="Crear" OnClick="btnCreateEmployee_Click" ValidationGroup="vgAddEmployee" CssClass="btn btn-primary" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>

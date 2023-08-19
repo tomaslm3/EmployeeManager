@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,27 @@ namespace EmployeeManager {
             });";
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "popupAddEmployee", script, true);
+        }
+
+        protected void btnCreateEmployee_Click(object sender, EventArgs e) {
+            if (IsValid) {
+                using (var db = new EmployeeContext()) {
+                    var newEmployee = new EmployeeModel {
+                        Firstname = txtFirstname.Text,
+                        Lastname = txtLastname.Text,
+                        Email = txtEmail.Text,
+                        Salary = Convert.ToDecimal(txtSalary.Text)
+                    };
+
+                    db.Employees.Add(newEmployee);
+                    db.SaveChanges();
+                }
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "closeModalScript", "$('#modalAddEmployee').modal('hide');", true);
+
+                // Update employee list
+                //LoadEmployees();
+            }
         }
     }
 }
