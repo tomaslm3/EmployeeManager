@@ -236,9 +236,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202308191512122_InitialCreate.cs" />
-    <Compile Include="Migrations\202308191512122_InitialCreate.designer.cs">
-      <DependentUpon>202308191512122_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202308191544560_InitialCreate.cs" />
+    <Compile Include="Migrations\202308191544560_InitialCreate.designer.cs">
+      <DependentUpon>202308191544560_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308191546593_FixedEmployeeModel.cs" />
+    <Compile Include="Migrations\202308191546593_FixedEmployeeModel.designer.cs">
+      <DependentUpon>202308191546593_FixedEmployeeModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeContext.cs" />
@@ -281,8 +285,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202308191512122_InitialCreate.resx">
-      <DependentUpon>202308191512122_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202308191544560_InitialCreate.resx">
+      <DependentUpon>202308191544560_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308191546593_FixedEmployeeModel.resx">
+      <DependentUpon>202308191546593_FixedEmployeeModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
