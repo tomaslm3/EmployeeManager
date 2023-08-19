@@ -5,7 +5,7 @@
         <asp:Button ID="btnAddEmployee" runat="server" Text="Agregar Empleado" OnClick="BtnOpenModalAddEmployee_Click" CssClass="btn btn-primary mb-3" />
 
         <div class="table-responsive">
-            <asp:Repeater ID="rptEmployees" runat="server">
+            <asp:Repeater ID="rptEmployees" runat="server" OnItemCommand="rptEmployees_ItemCommand">
                 <HeaderTemplate>
                     <table class="table table-bordered">
                         <thead>
@@ -17,6 +17,7 @@
                                 <th>Apellido</th>
                                 <th>Email</th>
                                 <th>Salario</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,7 @@
                         <td><%# Eval("Email") %></td>
                         <td><%# Eval("Salary", "{0:C}") %></td>
                         <td>
+                            <asp:LinkButton ID="btnEdit" runat="server" Text="Editar" CommandName="EditEmployee" CommandArgument='<%# Eval("ID") %>'></asp:LinkButton>
                             <asp:HiddenField ID="hfEmployeeId" runat="server" Value='<%# Eval("ID") %>' />
                         </td>
                     </tr>
@@ -76,5 +78,36 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modalEditEmployee" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabelEdit">Editar Empleado</h5>
+            </div>
+            <div class="modal-body">
+                <asp:ValidationSummary ID="ValidationSummaryEdit" runat="server" ValidationGroup="vgEditEmployee" CssClass="alert alert-danger" />
+                <asp:HiddenField ID="hfEditEmployeeId" runat="server" />
+                <asp:TextBox ID="txtEditFirstname" runat="server" CssClass="form-control" placeholder="Nombre" ValidationGroup="vgEditEmployee"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvEditFirstname" runat="server" ControlToValidate="txtEditFirstname" ErrorMessage="Se requiere Nombre" ValidationGroup="vgEditEmployee"></asp:RequiredFieldValidator>
+                <br />
+                <asp:TextBox ID="txtEditLastname" runat="server" CssClass="form-control" placeholder="Apellido" ValidationGroup="vgEditEmployee"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvEditLastname" runat="server" ControlToValidate="txtEditLastname" ErrorMessage="Se requiere Apellido" ValidationGroup="vgEditEmployee"></asp:RequiredFieldValidator>
+                <br />
+                <asp:TextBox ID="txtEditEmail" runat="server" CssClass="form-control" placeholder="Email" ValidationGroup="vgEditEmployee"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvEditEmail" runat="server" ControlToValidate="txtEditEmail" ErrorMessage="Se requiere Email" ValidationGroup="vgEditEmployee"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="revEditEmail" runat="server" ControlToValidate="txtEditEmail" ErrorMessage="Formato de Email invalido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="vgEditEmployee"></asp:RegularExpressionValidator>
+                <br />
+                <asp:TextBox ID="txtEditSalary" runat="server" CssClass="form-control" placeholder="Salario" ValidationGroup="vgEditEmployee"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvEditSalary" runat="server" ControlToValidate="txtEditSalary" ErrorMessage="Se requiere Salario" ValidationGroup="vgEditEmployee"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="revEditSalary" runat="server" ControlToValidate="txtEditSalary" ErrorMessage="Formato de Salario invalido" ValidationExpression="^\d*(\.\d{1,4})?$" ValidationGroup="vgEditEmployee"></asp:RegularExpressionValidator>
+                </div>
+            <div class="modal-footer">
+                <asp:Button ID="btnUpdateEmployee" runat="server" Text="Actualizar" OnClick="btnUpdateEmployee_Click" ValidationGroup="vgEditEmployee" CssClass="btn btn-primary" />
+                <asp:Button ID="btnCloseEditModal" runat="server" Text="Cerrar" CssClass="btn btn-danger" OnClick="btnCloseEditModal_Click" />
+            </div>
+        </div>
+    </div>
+</div>
     </div>
 </asp:Content>

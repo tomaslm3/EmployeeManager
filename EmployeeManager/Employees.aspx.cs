@@ -79,5 +79,69 @@ namespace EmployeeManager {
                 BindEmployees();
             }
         }
+
+        protected void btnEditEmployee_Click(object sender, EventArgs e) {
+            string script = @"$(document).ready(function () {
+                $('#modalEditEmployee').modal('show');
+            });";
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "popupEditEmployee", script, true);
+        }
+
+        protected void btnCloseEditModal_Click(object sender, EventArgs e) {
+            string script = @"$(document).ready(function () {
+                $('#modalAddEmployee').modal('hide');
+            });";
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "cerrarModal", script, true);
+        }
+
+        protected void rptEmployees_ItemCommand(object source, RepeaterCommandEventArgs e) {
+            if (e.CommandName == "EditEmployee") {
+                int employeeId = Convert.ToInt32(e.CommandArgument);
+                hfEditEmployeeId.Value = employeeId.ToString();
+
+                LoadEmployeeDataForEdit(employeeId);
+
+                string script = @"$(document).ready(function () {
+                $('#modalEditEmployee').modal('show');
+            });";
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "popupEditEmployee", script, true);
+            }
+        }
+
+        private void LoadEmployeeDataForEdit(int employeeId) {
+            using (EmployeeContext context = new EmployeeContext()) {
+                EmployeeModel employee = context.Employees.Find(employeeId);
+                if (employee != null) {
+                    txtEditFirstname.Text = employee.Firstname;
+                    txtEditLastname.Text = employee.Lastname;
+                    txtEditEmail.Text = employee.Email;
+                    txtEditSalary.Text = employee.Salary.ToString("0.##");
+                }
+            }
+        }
+
+        protected void btnUpdateEmployee_Click(object sender, EventArgs e) {
+            int employeeId = Convert.ToInt32(hfEditEmployeeId.Value);
+
+            using (EmployeeContext context = new EmployeeContext()) {
+                EmployeeModel employeeToUpdate = context.Employees.Find(employeeId);
+
+                if (employeeToUpdate != null) {
+                    employeeToUpdate.Firstname = txtEditFirstname.Text;
+                    employeeToUpdate.Lastname = txtEditLastname.Text;
+                    employeeToUpdate.Email = txtEditEmail.Text;
+                    employeeToUpdate.Salary = Convert.ToDecimal(txtEditSalary.Text);
+
+                    context.SaveChanges();
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "closeEditModalScript", "$('#modalEditEmployee').modal('hide');", true);
+
+                    BindEmployees();
+                }
+            }
+        }
     }
 }
