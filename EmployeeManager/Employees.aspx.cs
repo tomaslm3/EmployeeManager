@@ -16,9 +16,25 @@ namespace EmployeeManager {
 
         protected void BindEmployees() {
             using (EmployeeContext context = new EmployeeContext()) {
-                rptEmployees.DataSource = context.Employees.ToList();
+                var employees = context.Employees.ToList();
+                string searchTerm = txtSearch.Text.Trim();
+
+                if (!string.IsNullOrEmpty(searchTerm)) {
+                    employees = employees.Where(emp =>
+                        emp.Firstname.Contains(searchTerm) || emp.Lastname.Contains(searchTerm) ||
+                        $"{emp.Firstname} {emp.Lastname}".Contains(searchTerm)
+                    ).ToList();
+                }
+
+                rptEmployees.DataSource = employees;
                 rptEmployees.DataBind();
             }
+        }
+
+        protected void txtSearch_TextChanged(object sender, EventArgs e) {
+            
+                BindEmployees();
+            
         }
 
         protected void btnDeleteSelected_Click(object sender, EventArgs e) {

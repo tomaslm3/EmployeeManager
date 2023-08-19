@@ -2,7 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-4">
         <h2>Empleados</h2>
+
         <asp:Button ID="btnAddEmployee" runat="server" Text="Agregar Empleado" OnClick="BtnOpenModalAddEmployee_Click" CssClass="btn btn-primary mb-3" />
+
+        <div class="form-group">
+            <label for="txtSearch">Buscar por nombre:</label>
+            <asp:TextBox ID="txtSearch" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="txtSearch_TextChanged" />
+        </div>
 
         <div class="table-responsive">
             <asp:Repeater ID="rptEmployees" runat="server" OnItemCommand="rptEmployees_ItemCommand">
