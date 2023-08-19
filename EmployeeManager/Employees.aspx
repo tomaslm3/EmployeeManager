@@ -7,9 +7,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabel">Agregar Empleado</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="vgAddEmployee" CssClass="alert alert-danger" />
@@ -29,7 +26,7 @@
                 </div>
                 <div class="modal-footer">
                     <asp:Button ID="btnCreateEmployee" runat="server" Text="Crear" OnClick="btnCreateEmployee_Click" ValidationGroup="vgAddEmployee" CssClass="btn btn-primary" />
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <asp:Button ID="BtnCloseModal" runat="server" Text="Cerrar" CssClass="btn btn-danger" OnClick="BtnCloseModalAddEmployee_Click" />
                 </div>
             </div>
         </div>
