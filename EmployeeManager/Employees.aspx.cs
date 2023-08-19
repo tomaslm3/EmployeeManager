@@ -59,6 +59,10 @@ namespace EmployeeManager {
 
 
         protected void BtnOpenModalAddEmployee_Click(object sender, EventArgs e) {
+            txtFirstname.Text = string.Empty;
+            txtLastname.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtSalary.Text = string.Empty;
             string script = @"$(document).ready(function () {
                 $('#modalAddEmployee').modal('show');
             });";
@@ -89,9 +93,13 @@ namespace EmployeeManager {
                     db.SaveChanges();
                 }
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "closeModalScript", "$('#modalAddEmployee').modal('hide');", true);
 
-                
+                string script = @"$(document).ready(function () {
+                $('#modalAddEmployee').modal('hide');
+            });";
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "cerrarModal", script, true);
+
                 BindEmployees();
             }
         }
