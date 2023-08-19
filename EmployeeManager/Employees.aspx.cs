@@ -19,6 +19,15 @@ namespace EmployeeManager {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "popupAddEmployee", script, true);
         }
 
+        protected void BtnCloseModalAddEmployee_Click(object sender, EventArgs e) {
+            string script = @"$(document).ready(function () {
+                $('#modalAddEmployee').modal('hide');
+            });";
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "cerrarModal", script, true);
+        }
+
+
         protected void btnCreateEmployee_Click(object sender, EventArgs e) {
             if (IsValid) {
                 using (var db = new EmployeeContext()) {

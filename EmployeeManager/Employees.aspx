@@ -29,7 +29,7 @@
                 </div>
                 <div class="modal-footer">
                     <asp:Button ID="btnCreateEmployee" runat="server" Text="Crear" OnClick="btnCreateEmployee_Click" ValidationGroup="vgAddEmployee" CssClass="btn btn-primary" />
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <asp:Button ID="BtnCloseModal" runat="server" Text="Cerrar" CssClass="btn btn-danger" OnClick="BtnCloseModalAddEmployee_Click" />
                 </div>
             </div>
         </div>
