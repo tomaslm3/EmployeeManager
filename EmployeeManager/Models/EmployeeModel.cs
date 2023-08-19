@@ -8,11 +8,11 @@ public class EmployeeModel {
     public string Firstname { get; set; }
 
     [Required]
-    public int Lastname { get; set; }
+    public string Lastname { get; set; }
 
     [Required]
-    public int Email { get; set; }
+    public string Email { get; set; }
 
     [Required]
-    public string Salary { get; set; }
+    public decimal Salary { get; set; }
 }
