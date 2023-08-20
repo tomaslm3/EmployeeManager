@@ -67,7 +67,7 @@ namespace EmployeeManager {
                 $('#modalAddEmployee').modal('show');
             });";
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "popupAddEmployee", script, true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "openCreateEmployeeModal", script, true);
         }
 
         protected void BtnCloseModalAddEmployee_Click(object sender, EventArgs e) {
@@ -75,7 +75,7 @@ namespace EmployeeManager {
                 $('#modalAddEmployee').modal('hide');
             });";
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "cerrarModal", script, true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "closeCreateEmployeModal", script, true);
         }
 
 
@@ -98,18 +98,10 @@ namespace EmployeeManager {
                 $('#modalAddEmployee').modal('hide');
             });";
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "cerrarModal", script, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "closeCreateEmployeModal", script, true);
 
                 BindEmployees();
             }
-        }
-
-        protected void btnEditEmployee_Click(object sender, EventArgs e) {
-            string script = @"$(document).ready(function () {
-                $('#modalEditEmployee').modal('show');
-            });";
-
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "popupEditEmployee", script, true);
         }
 
         protected void btnCloseEditModal_Click(object sender, EventArgs e) {
@@ -117,7 +109,7 @@ namespace EmployeeManager {
                 $('#modalAddEmployee').modal('hide');
             });";
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "cerrarModal", script, true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "closeEditEmployeeModal", script, true);
         }
 
         protected void rptEmployees_ItemCommand(object source, RepeaterCommandEventArgs e) {
@@ -128,10 +120,24 @@ namespace EmployeeManager {
                 LoadEmployeeDataForEdit(employeeId);
 
                 string script = @"$(document).ready(function () {
-                $('#modalEditEmployee').modal('show');
-            });";
+                    $('#modalEditEmployee').modal('show');
+                });";
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "popupEditEmployee", script, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "openEditEmployeeModal", script, true);
+
+            } else if(e.CommandName == "DeleteEmployee") {
+                using (EmployeeContext context = new EmployeeContext()) {
+
+                    int employeeId = Convert.ToInt32(e.CommandArgument);
+                        
+                    var employee = context.Employees.Find(employeeId);
+                    if (employee != null) {
+                        context.Employees.Remove(employee);
+                    }
+                        
+                    context.SaveChanges();
+                    BindEmployees();
+                }
             }
         }
 
@@ -161,11 +167,12 @@ namespace EmployeeManager {
 
                     context.SaveChanges();
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "closeEditModalScript", "$('#modalEditEmployee').modal('hide');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "closeEditEmployeeModalScript", "$('#modalEditEmployee').modal('hide');", true);
 
                     BindEmployees();
                 }
             }
         }
+
     }
 }
