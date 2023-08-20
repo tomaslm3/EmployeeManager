@@ -14,6 +14,9 @@ namespace EmployeeManager {
             // Código que se ejecuta al iniciar la aplicación
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            string dataDirectory = Server.MapPath("~/App_Data");
+            AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory);
         }
     }
 }

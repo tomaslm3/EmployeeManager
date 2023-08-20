@@ -244,6 +244,10 @@
     <Compile Include="Migrations\202308191546593_FixedEmployeeModel.designer.cs">
       <DependentUpon>202308191546593_FixedEmployeeModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308201936569_CambiosEnModelos.cs" />
+    <Compile Include="Migrations\202308201936569_CambiosEnModelos.designer.cs">
+      <DependentUpon>202308201936569_CambiosEnModelos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeContext.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
@@ -291,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308191546593_FixedEmployeeModel.resx">
       <DependentUpon>202308191546593_FixedEmployeeModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308201936569_CambiosEnModelos.resx">
+      <DependentUpon>202308201936569_CambiosEnModelos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
