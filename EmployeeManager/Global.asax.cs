@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,9 @@ namespace EmployeeManager {
             // Código que se ejecuta al iniciar la aplicación
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            string dataDirectory = Server.MapPath("~/App_Data");
+            AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory);
         }
     }
 }
