@@ -1,10 +1,11 @@
 # Aplicación Web de Administración de Empleados
 
-Este es un proyecto de aplicación web de administración de empleados desarrollada con ASP.NET WebForms y SQLite.
+Este es un proyecto de una aplicación web de administración de empleados desarrollada con ASP.NET WebForms y SQL Server como base de datos.
 
 ## Requisitos Previos
 
 - Visual Studio 2022 o posterior.
+- SQL Server instalado y configurado localmente.
 - Conexión a internet para descargar las dependencias de NuGet.
 
 ## Pasos para Clonar y Probar la Aplicación
@@ -13,25 +14,36 @@ Este es un proyecto de aplicación web de administración de empleados desarroll
 
    Abre tu terminal con git y ejecuta el siguiente comando para clonar el repositorio:
 
-git clone https://github.com/tomaslm3/EmployeeManager.git
+   ```bash 
+   git clone https://github.com/tomaslm3/EmployeeManager.git
+   ```
 
 2. **Abrir el Proyecto en Visual Studio:**
 
-Abre el archivo `EmployeeManager.sln` con Visual Studio.
+	Abre el archivo `EmployeeManager.sln` con Visual Studio.
 
 3. **Restaurar Paquetes NuGet:**
 
-En Visual Studio, abre la Consola del Administrador de Paquetes (Tools > NuGet Package Manager > Package Manager Console) y ejecuta el siguiente comando para restaurar los paquetes NuGet:
+	En Visual Studio, abre la Consola del Administrador de Paquetes (Tools > NuGet Package Manager > Package Manager Console) y ejecuta el siguiente comando para restaurar los paquetes NuGet:
 
-Update-Package -reinstall
+	```bash
+	Update-Package -reinstall
+	```
 
-4. **Iniciar la Aplicación:**
+4. **Ejecutar Migraciones:**
 
-- Presiona F5 o haz clic en el botón "Start" para compilar y ejecutar la aplicación en tu navegador.
+	Abre la Consola del Administrador de Paquetes nuevamente y ejecuta el siguiente comando para crear la base de datos y aplicar las migraciones:
+	```bash
+	Update-Database
+	```
 
-5. **Explorar la Aplicación:**
+5. **Iniciar la Aplicación:**
 
-- Abre tu navegador y ve a la URL `http://localhost:port` donde `port` es el puerto en el que se está ejecutando la aplicación.
+	Presiona F5 o haz clic en el botón "Start" para compilar y ejecutar la aplicación en tu navegador.
+
+6. **Explorar la Aplicación:**
+
+	Abre tu navegador y ve a la URL `http://localhost:port` donde `port` es el puerto en el que se está ejecutando la aplicación.
 
 ## Contacto
 

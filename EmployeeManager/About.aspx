@@ -8,7 +8,7 @@
             <li><strong>ASP.NET Web Forms:</strong> Construida utilizando ASP.NET Web Forms, framework para la creación de aplicaciones web.</li>
             <li><strong>C#:</strong> El lenguaje de programación C# ha sido utilizado para la lógica del lado del servidor y el manejo de eventos.</li>
             <li><strong>Bootstrap:</strong> Framework de diseño Bootstrap para crear una interfaz de usuario moderna y receptiva.</li>
-            <li><strong>SQLite:</strong> La base de datos de la aplicación está gestionada por SQLite, lo que permite almacenar y administrar los datos de los empleados de manera eficiente.</li>
+            <li><strong>SQL Server:</strong> La base de datos de la aplicación está gestionada por SQL Server, lo que permite almacenar y administrar los datos de los empleados de manera eficiente.</li>
             <li><strong>Entity Framework y LINQ:</strong> Entity Framework junto con LINQ para acceder y manipular los datos de la base de datos de forma sencilla y eficaz.</li>
         </ul>
 
@@ -27,7 +27,7 @@
             <li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/">Documentación de C#</a></li>
             <li><a href="https://getbootstrap.com/">Sitio oficial de Bootstrap</a></li>
             <li><a href="https://docs.microsoft.com/en-us/ef/">Documentación de Entity Framework</a></li>
-            <li><a href="https://www.sqlite.org/">Sitio oficial de SQLite</a></li>
+            <li><a href="https://docs.microsoft.com/en-us/sql/sql-server/">Documentación de SQL Server</a></li>
         </ul>
     </main>
 </asp:Content>
