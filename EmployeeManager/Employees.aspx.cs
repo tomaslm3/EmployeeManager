@@ -93,14 +93,7 @@ namespace EmployeeManager {
                     db.SaveChanges();
                 }
 
-
-                string script = @"$(document).ready(function () {
-                $('#modalAddEmployee').modal('hide');
-            });";
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "closeCreateEmployeModal", script, true);
-
-                BindEmployees();
+                Response.Redirect("~/Employees.aspx");
             }
         }
 
@@ -167,9 +160,7 @@ namespace EmployeeManager {
 
                     context.SaveChanges();
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "closeEditEmployeeModalScript", "$('#modalEditEmployee').modal('hide');", true);
-
-                    BindEmployees();
+                    Response.Redirect("~/Employees.aspx");
                 }
             }
         }
