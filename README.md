@@ -51,7 +51,6 @@ Este es un proyecto de una aplicación web de administración de empleados desar
 
 Si tienes alguna pregunta o sugerencia sobre esta aplicación, no dudes en contactarme:
 
-- Nombre: Tomás Lopez Mancina
 - Correo Electrónico: tomaslm_3@hotmail.com
 - GitHub: [https://github.com/tomaslm3](https://github.com/tomaslm3)
 - LinkedIn: [https://www.linkedin.com/in/tomaslopezmancina/](https://www.linkedin.com/in/tomaslopezmancina/)
