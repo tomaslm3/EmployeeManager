@@ -2,13 +2,15 @@
 
 Este es un proyecto de una aplicación web de administración de empleados desarrollada con ASP.NET WebForms y SQL Server como base de datos.
 
-## Requisitos Previos
+- Link a Deploy: https://tomaslm3.bsite.net/  (No cuenta con certificado ssl, por lo que es necesario dar click en `Avanzado` y luego en  `Continuar a`)
+
+## Pasos para Clonar y Probar la Aplicación
+
+**Requisitos Previos**
 
 - Visual Studio 2022 o posterior.
 - SQL Server instalado y configurado localmente.
 - Conexión a internet para descargar las dependencias de NuGet.
-
-## Pasos para Clonar y Probar la Aplicación
 
 1. **Clonar el Repositorio:**
 
