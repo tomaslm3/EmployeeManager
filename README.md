@@ -2,7 +2,7 @@
 
 Este es un proyecto de una aplicación web de administración de empleados desarrollada con ASP.NET WebForms y SQL Server como base de datos.
 
-- Link a Deploy: https://tomaslm3.bsite.net/  (No cuenta con certificado ssl, por lo que es necesario dar click en `Avanzado` y luego en  `Continuar a`)
+- Link a Deploy: http://em-management.somee.com/
 
 ## Pasos para Clonar y Probar la Aplicación
 
